@@ -20,4 +20,24 @@ fn main() {
 
     print!("What operation would you like to do? [+-*/]: ");
     read(&mut operators);
+
+    let num_1: f32 = num_1.trim().parse().unwrap();
+    let num_2: f32 = num_2.trim().parse().unwrap();
+    let operator: char = operators.trim().chars().next().unwrap();
+
+    let operators = String::from("+-*/");
+
+    if !operators.contains(operator) {
+        panic!("unknown operator");
+    }
+
+    let result = match operator {
+        '+' => num_1 + num_2,
+        '-' => num_1 - num_2,
+        '*' => num_1 * num_2,
+        '/' => num_1 / num_2,
+        _ => panic!("error in operator")
+    };
+
+    println!("the result of {} {} {} = {}", num_1, operator, num_2, result);
 }
